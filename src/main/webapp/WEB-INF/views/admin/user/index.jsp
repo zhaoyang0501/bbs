@@ -39,7 +39,7 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>学生管理</h3>
+								<h3>用户管理</h3>
 							</div>
 							<div class="box well form-inline">
 								<span>学生姓名：</span>
@@ -48,21 +48,20 @@
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
 							<div class="widget-container">
-								
-									<a class="btn btn-success" style="float: right; margin: 5px;" onclick="$.adminUser.showUserAddModal()"><i class="icon-plus"></i>新增</a>
 								<table class="responsive table table-striped table-bordered"
 									id="dt_table_view">
 									<thead>
 										<tr>
-											<th >学号</th>
+											<th >用户名</th>
 											<th >姓名</th>
-											<th >地址</th>
-											<th >性别</th>
-											<th >电话</th>
-											<th >班级</th>
+											<th >身份</th>
+											<th >状态</th>
+											<th >专业</th>
+											<th >年级</th>
+											<th >报考院校</th>
 											<th >电子邮件</th>
-											<th >加入日期</th>
-											<th >角色</th>
+											<th >性别</th>
+											<th >注册日期</th>
 											<th >操作</th>
 										</tr>
 									</thead>

@@ -11,7 +11,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.pzy.entity.Grades;
 import com.pzy.entity.MsgBoard;
 import com.pzy.entity.User;
 import com.pzy.service.MsgBoardService;

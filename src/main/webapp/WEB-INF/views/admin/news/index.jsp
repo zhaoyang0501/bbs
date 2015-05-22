@@ -39,7 +39,7 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>新闻管理</h3>
+								<h3>资源管理</h3>
 							</div>
 							<div class="box well form-inline">
 								<span>标题：</span>
@@ -48,15 +48,12 @@
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
 							<div class="widget-container">
-								
-									<a class="btn btn-success" style="float: right; margin: 5px;" onclick="$.adminNews.showaddModal()"><i class="icon-plus"></i>发布</a>
 								<table class="responsive table table-striped table-bordered"
 									id="dt_table_view">
 									<thead>
 										<tr>
 											<th >id</th>
 											<th >标题</th>
-											<th >正文</th>
 											<th >发布时间</th>
 										</tr>
 									</thead>

@@ -4,7 +4,7 @@
 <html lang="ch">
 <%@ include file="../common/meta.jsp"%>
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.grades.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace/admin.msgboard.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/falgun/bootbox.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/falgun/bootstrap-datetimepicker.zh-CN.js"></script>
@@ -39,24 +39,29 @@
 					<div class="span12">
 						<div class="content-widgets light-gray">
 							<div class="widget-head  bondi-blue" >
-								<h3>班级审管理</h3>
+								<h3>留言管理</h3>
 							</div>
 							<div class="box well form-inline">
-								<span>班级名称：</span>
-								<input type="text" id="_name" >
-								<a onclick="$.adminGrades.initSearchDataTable()"
+								<div class="input-append date">
+									<input id="start_" type="text" value="" readonly="readonly" style="width:80px;">
+									<span class="add-on"><i class="icon-th"></i></span>
+								</div>
+								<span >~</span>
+								<div class="input-append date">
+									<input id="end_" type="text" value="" readonly="readonly" style="width:80px;">
+									<span class="add-on"><i class="icon-th"></i></span>
+								</div>
+								<a onclick="$.adminMsgboard.initSearchDataTable()"
 									class="btn btn-info" data-loading-text="正在加载..."><i class="icon-search"></i>查询</a>
 							</div>
 							<div class="widget-container">
-									<table class="responsive table table-striped table-bordered"
+								<table class="responsive table table-striped table-bordered"
 									id="dt_table_view">
 									<thead>
 										<tr>
-											<th >id</th>
-											<th >班级名称</th>
-											<th >班级描述</th>
-												<th >状态</th>
-											<th >发布时间</th>
+											<th >留言者</th>
+											<th >内容</th>
+											<th >留言时间</th>
 											<th >操作</th>
 										</tr>
 									</thead>
@@ -106,7 +111,7 @@
 		</div>
 		
 		<div class="modal-footer center" id="div_footer">
-			<a class="btn btn-primary" onclick="$.adminGrades.save()">保存</a>
+			<a class="btn btn-primary" onclick="$.adminMsgboard.save()">保存</a>
 			<a href="#" class="btn" data-dismiss="modal" id="closeViewModal">关闭</a>
 		</div>
 	</div>

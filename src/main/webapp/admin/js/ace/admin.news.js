@@ -28,9 +28,6 @@ jQuery.adminNews = {
 					"bProcessing" : true,
 					"bSort" : false,
 					"sAjaxSource" : $.ace.getContextPath() + "/admin/news/list",
-					"fnDrawCallback" : function(oSettings) {
-						$('[rel="popover"],[data-rel="popover"]').popover();
-					},
 					"fnServerData" : function(sSource, aoData, fnCallback) {
 						var name = $("#_name").val();
 						if (!!name) {
@@ -53,8 +50,6 @@ jQuery.adminNews = {
 						"mDataProp" : "id"
 					},{
 						"mDataProp" : "title"
-					},{
-						"mDataProp" : "context"
 					}, {
 						"mDataProp" : "createDate"
 					}, {
@@ -62,19 +57,9 @@ jQuery.adminNews = {
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [2],
+							'aTargets' : [3],
 							'fnRender' : function(oObj, sVal) {
-								if(sVal.length>10)
-									return sVal.substring(0,10)+".....";
-								else 
-									return sVal;
-							}
-						},
-						{
-							'aTargets' : [4],
-							'fnRender' : function(oObj, sVal) {
-								return "<button class=\"btn2 btn-info\" onclick=\"$.adminNews.showEdit("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>修改</button>"+
-								 "  <button class=\"btn2 btn-info\" onclick=\"$.adminNews.deleteNews("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
+								return "  <button class=\"btn2 btn-info\" onclick=\"$.adminNews.deleteNews("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>";
 							}
 						},
 					 {

@@ -91,7 +91,7 @@
 ================================================== -->
 <div class="container">
 
-<div class="twelve columns">
+<div class="Sixteen columns">
 	
 	<div class="post post-page">
 		<a href="#" class="post-icon standard"></a>
@@ -109,29 +109,6 @@
 
 <!-- Widget
 ================================================== -->
-<div class="four columns">
-
-	<!-- Search -->
-	<div class="widget first">
-		<div class="headline no-margin"><h4>查找</h4></div>
-		<div class="search">
-			<input type="text" onblur="if(this.value=='')this.value='';" onfocus="if(this.value=='')this.value='';" value="" class="text">
-		</div>
-	</div>
-	
-	<!-- Categories -->
-	<div class="widget">
-		<div class="headline no-margin"><h4>分类</h4></div>
-			<ul class="links-list-alt">
-				<li><a href="#">招生简章</a></li>
-				<li><a href="#">往年分数线</a></li>
-				<li><a href="#">录取比例</a></li>
-				<li><a href="#">复试分数线</a></li>
-				<li><a href="#">学校往年真题题</a></li>
-			</ul>
-	</div>
-</div>
-
 </div>
 </div>
 <!-- Wrapper / End -->

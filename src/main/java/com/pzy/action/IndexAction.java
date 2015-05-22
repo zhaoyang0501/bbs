@@ -13,11 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import com.pzy.entity.Category;
-import com.pzy.entity.Grades;
 import com.pzy.entity.News;
 import com.pzy.entity.User;
-import com.pzy.service.CategoryService;
 import com.pzy.service.NewsService;
 import com.pzy.service.UserService;
 
@@ -25,9 +22,7 @@ import com.pzy.service.UserService;
 @Namespace("/")
 public class IndexAction extends ActionSupport implements SessionAware{
 	private Map<String,Object> session;
-	private Grades grades;
 	private List<News> newss;
-	private List<Grades> gradess;
 	private List<User> users;
 	private List<User> students;
 	private List<User> teachers;
@@ -91,23 +86,11 @@ public class IndexAction extends ActionSupport implements SessionAware{
 		this.tip="注册成功欢迎登陆";
 		return SUCCESS;
 	}
-	public Grades getGrades() {
-		return grades;
-	}
-	public void setGrades(Grades grades) {
-		this.grades = grades;
-	}
 	public List<News> getNewss() {
 		return newss;
 	}
 	public void setNewss(List<News> newss) {
 		this.newss = newss;
-	}
-	public List<Grades> getGradess() {
-		return gradess;
-	}
-	public void setGradess(List<Grades> gradess) {
-		this.gradess = gradess;
 	}
 	@Override
 	public void setSession(Map<String, Object> arg0) {

@@ -16,8 +16,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import com.pzy.entity.Grades;
-import com.pzy.entity.Notice;
 import com.pzy.entity.User;
 import com.pzy.repository.UserRepository;
 

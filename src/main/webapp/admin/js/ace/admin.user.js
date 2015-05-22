@@ -53,28 +53,30 @@ jQuery.adminUser = {
 					}, {
 						"mDataProp" : "name"
 					}, {
-						"mDataProp" : "password"
+						"mDataProp" : "role"
 					}, {
-						"mDataProp" : "address"
+						"mDataProp" : "state"
 					}, {
-						"mDataProp" : "tel"
+						"mDataProp" : "major"
 					}, {
-						"mDataProp" : "grades.name"
+						"mDataProp" : "grades"
+					}, {
+						"mDataProp" : "school"
 					}, {
 						"mDataProp" : "email"
 					}, {
-						"mDataProp" : "createDate"
+						"mDataProp" : "sex"
 					}, {
-						"mDataProp" : "role"
+						"mDataProp" : "createDate"
 					},{
 						"mDataProp" : ""
 					}],
 					"aoColumnDefs" : [
 						{
-							'aTargets' : [9],
+							'aTargets' : [10],
 							'fnRender' : function(oObj, sVal) {
-								return"  <button class=\"btn2 btn-info\" onclick=\"$.adminUser.deleteUser("+oObj.aData.id+")\"><i class=\"icon-trash\"></i> 删除</button>" +
-								" <button class=\"btn2 btn-info\" onclick=\"$.adminUser.setLead("+oObj.aData.id+")\"><i class=\"icon-pencil\"></i>设为班长</button>";
+								return"  <button class=\"btn2 btn-info\" onclick=\"$.adminUser.deleteUser('"+oObj.aData.id+"')\"><i class=\"icon-trash\"></i> 删除</button>";
+								
 							}
 						},
 					 {

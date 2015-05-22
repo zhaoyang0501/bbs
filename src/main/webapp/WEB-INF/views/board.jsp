@@ -114,6 +114,7 @@
 					 
 	</div>
 	<div class="clear"></div>
+	<c:if test="${ user!=null}">
 	
 	<div class="headline no-margin"><h4>留言</h4></div>
 	<div class="form-spacer"></div>
@@ -132,7 +133,7 @@
 			</form>
 		</div>
 	<!-- End Portfolio Content -->
-		
+	</c:if>	
 </div>
 
 

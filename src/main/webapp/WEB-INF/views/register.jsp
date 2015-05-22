@@ -52,24 +52,7 @@
 
 <!-- 960 Container -->
 <div class="container ie-dropdown-fix">
-<div id="header">
-		<!-- Logo -->
-		<div class="sixteen columns">
-			<div id="logo">
-				<a href="#"><img src="images/logo.png" alt="logo" /></a>
-				<div id="tagline">你的同学都在这里，快加入我们吧！</div>
-				<div class="clear"></div>
-			</div>
-		</div>
-	</div>
-	<div class="sixteen columns">
-		<div id="navigation">
-			<ul id="nav">
-				<li><a href="index.html">首页</a></li>
-			</ul>
-		</div> 
-		<div class="clear"></div>
-	</div>
+	<%@include file="./head.jsp" %>
 </div>
 <!-- 960 Container / End -->
 

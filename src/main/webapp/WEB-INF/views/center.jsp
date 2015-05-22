@@ -93,37 +93,37 @@
 			<form  action="${pageContext.request.contextPath}/doCenter" enctype="multipart/form-data" method="post">
 				<div class="field">
 					<label>身份:</label>
-					<select name='user.role'>
-						<option value="学生">学生</option>
-						<option value="教师">教师</option>
+					<select name='user.role' >
+						<option value="学生" ${user.role=='学生'?"selected='selected'":''} >学生</option>
+						<option value="教师" ${user.role=='教师'?"selected='selected'":''} >教师</option>
 					</select>
 				</div>
 				<div class="field">
 					<label>状态:</label>
 					<select name='user.state'>
-						<option value="备考">备考</option>
-						<option value="已考">已考</option>
+						<option value="备考" ${user.role=='备考'?"selected='selected'":''}>备考</option>
+						<option value="已考"  ${user.role=='已考'?"selected='selected'":''}>已考</option>
 					</select>
 				</div>
 				<div class="field">
 					<label>专业:</label>
-					<input type="text" name="user.major" class="text" value="" >
+					<input type="text" name="user.major" class="text" value="${user.major}" >
 				</div>
 				<div class="field">
 					<label>年级:</label>
-					<input type="text" name="user.grades" class="text" value="" >
+					<input type="text" name="user.grades" class="text" value="${user.grades}" >
 				</div>
 				<div class="field">
 					<label>报考学校:</label>
-					<input type="text" name="user.school" class="text" value="" >
+					<input type="text" name="user.school" class="text" value="${user.school}" >
 				</div>
 				<div class="field">
 					<label>用户名:</label>
-					<input type="text" name="user.id" class="text" value="" >
+					<input type="text" name="user.id" class="text" value="${user.id}" >
 				</div>
 				<div class="field">
 					<label>姓名:</label>
-					<input type="text" name="user.name" class="text" value="${user.name }">
+					<input type="text" name="user.name" class="text" value="${user.name}" >
 				</div>
 				<div class="field">
 					<label>密码:</label>

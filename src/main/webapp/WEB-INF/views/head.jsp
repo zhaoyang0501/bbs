@@ -29,7 +29,7 @@
 					<li style="float: right"><a href="login">登陆</a></li>
 				</c:if>
 				<c:if test="${sessionScope.user!=null}">
-					<li style="float: right"><a href="loginout">欢迎您${ sessionScope.user.name}|&nbsp;&nbsp;&nbsp;   退出</a></li>
+					<li style="float: right"><a href="loginout">欢迎您${ sessionScope.user.name}${ sessionScope.user.role}|&nbsp;&nbsp;&nbsp;   退出</a></li>
 				</c:if>
 				
 			</ul>

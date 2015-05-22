@@ -19,7 +19,7 @@
 		<div class="four columns">
 			<div class="footer-headline"><h4>链接</h4></div>
 			<ul class="links-list">
-				<li><a href="#">江南大学</a></li>
+				<li><a href="#">XX大学</a></li>
 				
 			</ul>
 		</div>

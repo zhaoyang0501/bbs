@@ -73,9 +73,11 @@
 			<div id="bolded-line"></div>
 		</div>
 	</div>
-	<div class="two columns">
-	<a style="float: right" href="createNews" class="button color medium">发布</a>
-	</div>
+	<c:if test="${ user!=null}">
+		<div class="two columns">
+		<a style="float: right" href="createNews" class="button color medium">发布</a>
+		</div>
+	</c:if>
 </div>
 
 <div class="container">
@@ -103,7 +105,7 @@
 									标题
 								</th>
 								<th>
-									发布着
+									发布人
 								</th>
 								<th>
 									发布时间

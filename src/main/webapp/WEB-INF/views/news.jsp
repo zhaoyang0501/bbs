@@ -34,7 +34,10 @@
 <script src="js/fancybox.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/isotope.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/js/ace.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/news.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/falgun/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/falgun/dataTables.bootstrap.js"></script>
 <!-- Styles Switcher
 ================================================== -->
 <link rel="stylesheet" type="text/css" href="css/switcher.css">
@@ -63,57 +66,53 @@
 </div>
 <!-- 960 Container / End -->
 
+<div class="container">
+	<div class="fourteen columns">
+		<div id="page-title">
+			<h2>资源分享</h2>
+			<div id="bolded-line"></div>
+		</div>
+	</div>
+	<div class="two columns">
+	<a style="float: right" href="createNews" class="button color medium">发布</a>
+	</div>
+</div>
 
+<div class="container">
+<c:if test="${tip!=null }">
+	<div class="sixteen columns">
+		<div class="notification success  closeable" style="margin: 5px 0 25px 0;">
+			<p>${tip}</p>
+		</div>
+	</div>
+</c:if>
+</div>
 <!-- Content
 ================================================== -->
 <div class="container">
 
 <div class="twelve columns">
 	
-	<!-- Post -->
-	<div class="post">
-		<a href="#" class="post-icon standard"></a>
-		<div class="post-content">
-			<div class="post-title"><h2><a href="blog_post.html">测试标题</a></h2></div>
-			<div class="post-meta"><span><i class="mini-ico-calendar"></i>On 10 August, 2012</span> <span><i class="mini-ico-user"></i>By <a href="#">admin</a></span> <span><i class="mini-ico-comment"></i>With <a href="#">12 Comments</a></span></div>
-			<div class="post-description">
-				<p>测试标题测试标题测试标题测试标题测试标题</p>
-			</div>
-			<a class="post-entry" href="blog_post.html">详细信息</a>
-		</div>
-	</div>
-	
-	<!-- Post -->
-	<div class="post">
-		<a href="#" class="post-icon standard"></a>
-		<div class="post-content">
-			<div class="post-title"><h2><a href="blog_post.html">测试标题</a></h2></div>
-			<div class="post-meta"><span><i class="mini-ico-calendar"></i>On 10 August, 2012</span> <span><i class="mini-ico-user"></i>By <a href="#">admin</a></span> <span><i class="mini-ico-comment"></i>With <a href="#">12 Comments</a></span></div>
-			<div class="post-description">
-				<p>测试标题测试标题测试标题测试标题测试标题</p>
-			</div>
-			<a class="post-entry" href="blog_post.html">详细信息</a>
-		</div>
-	</div>
-	<!-- Post -->
-	<div class="post">
-		<a href="#" class="post-icon standard"></a>
-		<div class="post-content">
-			<div class="post-title"><h2><a href="blog_post.html">测试标题</a></h2></div>
-			<div class="post-meta"><span><i class="mini-ico-calendar"></i>On 10 August, 2012</span> <span><i class="mini-ico-user"></i>By <a href="#">admin</a></span> <span><i class="mini-ico-comment"></i>With <a href="#">12 Comments</a></span></div>
-			<div class="post-description">
-				<p>测试标题测试标题测试标题测试标题测试标题</p>
-			</div>
-			<a class="post-entry" href="blog_post.html">详细信息</a>
-		</div>
-	</div>
-	<ul class="pagination">
-		<a href="#"><li>1</li></a>
-		<a href="#"><li class="current">2</li></a>
-		<a href="#"><li>3</li></a>
-		<a href="#"><li>4</li></a>
-		<a href="#"><li>5</li></a>
-	</ul>
+	<table class="standard-table" id='dt_table_view'>
+						<thead>
+							<tr>
+								<th>
+									类别
+								</th>
+								<th>
+									标题
+								</th>
+								<th>
+									发布着
+								</th>
+								<th>
+									发布时间
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+	</table>
 	
 </div>
 
@@ -121,12 +120,12 @@
 <!-- Widget
 ================================================== -->
 <div class="four columns">
-
+	<input type="hidden" id="category" value="">
 	<!-- Search -->
 	<div class="widget first">
 		<div class="headline no-margin"><h4>查找</h4></div>
 		<div class="search">
-			<input type="text" onblur="if(this.value=='')this.value='';" onfocus="if(this.value=='')this.value='';" value="" class="text">
+			<input id='search_input' type="text" onblur="if(this.value=='')this.value='';" onfocus="if(this.value=='')this.value='';" value="" class="text">
 		</div>
 	</div>
 	
@@ -134,11 +133,9 @@
 	<div class="widget">
 		<div class="headline no-margin"><h4>分类</h4></div>
 			<ul class="links-list-alt">
-				<li><a href="#">招生简章</a></li>
-				<li><a href="#">往年分数线</a></li>
-				<li><a href="#">录取比例</a></li>
-				<li><a href="#">复试分数线</a></li>
-				<li><a href="#">学校往年真题题</a></li>
+				<c:forEach items="${categorys }" var="bean">
+						<li><a   href="javascript:;" onclick="$.news.categoryChange('${bean.id }');">${bean.name }</a></li>
+				</c:forEach>
 			</ul>
 	</div>
 </div>
@@ -148,6 +145,17 @@
 <!-- Wrapper / End -->
 
 	<%@include file="./foot.jsp" %>
-
+<script type="text/javascript">
+	$(function(){
+		  $('#search_input').bind('keyup', function(event) {
+		        if (event.keyCode == "13") {
+		            //回车执行查询
+		        	$.news.initSearchDataTable();
+		        }
+		    });
+		$.ace.setContextPath('${pageContext.request.contextPath}');
+		$.news.initSearchDataTable();
+	});
+	</script>
 </body>
 </html>

@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.pzy.entity.Category;
 import com.pzy.entity.News;
 import com.pzy.repository.NewsRepository;
 
@@ -33,13 +34,30 @@ public class NewsService {
      public List<News> findAll() {
          return (List<News>) newsRepository.findAll();
      }
+     public Page<News> findAll(final int pageNumber, final int pageSize,final String name,final Category category){
+         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
+         Specification<News> spec = new Specification<News>() {
+              public Predicate toPredicate(Root<News> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+              Predicate predicate = cb.conjunction();
+              if (name != null) {
+                   predicate.getExpressions().add(cb.like(root.get("title").as(String.class), "%"+name+"%"));
+              }
+              if (category != null) {
+                  predicate.getExpressions().add(cb.equal(root.get("category").as(Category.class),category));
+             }
+              return predicate;
+              }
+         };
+         Page<News> result = (Page<News>) newsRepository.findAll(spec, pageRequest);
+         return result;
+     	}
      public Page<News> findAll(final int pageNumber, final int pageSize,final String name){
          PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
          Specification<News> spec = new Specification<News>() {
               public Predicate toPredicate(Root<News> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
               Predicate predicate = cb.conjunction();
               if (name != null) {
-                   predicate.getExpressions().add(cb.like(root.get("name").as(String.class), "%"+name+"%"));
+                   predicate.getExpressions().add(cb.like(root.get("title").as(String.class), "%"+name+"%"));
               }
               return predicate;
               }

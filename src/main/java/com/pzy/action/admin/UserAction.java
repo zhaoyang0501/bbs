@@ -14,7 +14,6 @@ import org.springframework.data.domain.Page;
 import com.pzy.action.PageAction;
 import com.pzy.entity.Grades;
 import com.pzy.entity.User;
-import com.pzy.service.GradesService;
 import com.pzy.service.UserService;
 
 @Namespace("/admin/user")
@@ -26,13 +25,10 @@ public class UserAction extends PageAction {
 	private List<User> users;
 	private List<Grades> gradess;
 	@Autowired
-	private GradesService gradesService;
-	@Autowired
 	private UserService userService;
 	@Autowired
 	@Action(value = "index", results = { @Result(name = "success", location = "/WEB-INF/views/admin/user/index.jsp") })
 	public String index() {
-		gradess=gradesService.findAllApproved();
 		return SUCCESS;
 	}
 

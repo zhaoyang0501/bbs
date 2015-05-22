@@ -28,12 +28,13 @@ public class UserService {
      public List<User> findAll() {
           return (List<User>) userRepository.findAll();
      }
-     public List<User> findByNews(Grades grades){
-  		return userRepository.findByGradesOrderByCreateDateDesc(grades);
-  	}
-     public List<User> findByGrades(Grades grades){
- 		return userRepository.findByGrades(grades);
- 	}
+     public List<User> findStudent(){
+  		return userRepository.findByroleOrderByCreateDateDesc("学生");
+  	 }
+     public List<User> findTeacher(){
+   		return userRepository.findByroleOrderByCreateDateDesc("教师");
+   	 }
+     
      public Page<User> findAll(final int pageNumber, final int pageSize,final String userName){
                PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
               

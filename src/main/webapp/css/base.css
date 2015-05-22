@@ -213,3 +213,4 @@
 	.remove-bottom { margin-bottom: 0 !important; }
 	.half-bottom { margin-bottom: 10px !important; }
 	.add-bottom { margin-bottom: 20px !important; }
+	select[name="dt_table_view_length"] { display: inline;}

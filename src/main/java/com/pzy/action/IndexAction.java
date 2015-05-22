@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -14,13 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.pzy.entity.Category;
 import com.pzy.entity.Grades;
 import com.pzy.entity.News;
-import com.pzy.entity.Notice;
 import com.pzy.entity.User;
-import com.pzy.service.GradesService;
+import com.pzy.service.CategoryService;
 import com.pzy.service.NewsService;
-import com.pzy.service.NoticeService;
 import com.pzy.service.UserService;
 
 @ParentPackage("struts-default")  
@@ -31,19 +29,18 @@ public class IndexAction extends ActionSupport implements SessionAware{
 	private List<News> newss;
 	private List<Grades> gradess;
 	private List<User> users;
+	private List<User> students;
+	private List<User> teachers;
 	private User user;
 	private String tip;
-	@Autowired
-	private GradesService gradesService;
+	
 	@Autowired
 	private NewsService newsService;
 	@Autowired
 	private UserService userService;
-	
-	
 	public String execute() throws Exception {
-		newss=newsService.findTop3();
-		gradess=gradesService.findTop4();
+		students=userService.findStudent();
+		teachers=userService.findTeacher();
 		return SUCCESS;
 	}
 	@Action(value = "apply", results = { @Result(name = "success", location = "/WEB-INF/views/apply.jsp") })
@@ -59,8 +56,8 @@ public class IndexAction extends ActionSupport implements SessionAware{
 	 	ActionContext.getContext().getSession().remove("user");
 	 	ActionContext.getContext().getSession().remove("grades");
 	 	ActionContext.getContext().getSession().clear();
-		newss=newsService.findTop3();
-		gradess=gradesService.findTop4();
+	 	students=userService.findStudent();
+		teachers=userService.findTeacher();
 	 	tip="成功退出登陆";
 	 	return SUCCESS;
      }
@@ -71,6 +68,8 @@ public class IndexAction extends ActionSupport implements SessionAware{
 	    	User loginuser=userService.login(user.getId(), user.getPassword());
 	    	if(loginuser!=null){
 	    		session.put("user",loginuser );
+	    		students=userService.findStudent();
+	    		teachers=userService.findTeacher();
 	            return SUCCESS; 
 	    	}
 	    	else{
@@ -87,6 +86,7 @@ public class IndexAction extends ActionSupport implements SessionAware{
 	}
 	@Action(value = "doRegister", results = { @Result(name = "success", location = "/WEB-INF/views/login.jsp") })
 	public String doRegister() throws Exception {
+		user.setCreateDate(new Date());
 		userService.save(user);
 		this.tip="注册成功欢迎登陆";
 		return SUCCESS;
@@ -134,5 +134,17 @@ public class IndexAction extends ActionSupport implements SessionAware{
 	}
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+	public List<User> getStudents() {
+		return students;
+	}
+	public void setStudents(List<User> students) {
+		this.students = students;
+	}
+	public List<User> getTeachers() {
+		return teachers;
+	}
+	public void setTeachers(List<User> teachers) {
+		this.teachers = teachers;
 	}
 }

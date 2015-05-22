@@ -102,6 +102,18 @@
 		<!-- Form -->
 		<div id="contact-form">
 			<form  action="${pageContext.request.contextPath}/doRegister" enctype="multipart/form-data" method="post">
+					<div class="field">
+					<label>用户名:</label>
+					<input type="text" name="user.id" class="text" value="" >
+				</div>
+				<div class="field">
+					<label>姓名:</label>
+					<input type="text" name="user.name" class="text" value="">
+				</div>
+				<div class="field">
+					<label>密码:</label>
+					<input type="password" name="user.password" class="text"  value="">
+				</div>
 				<div class="field">
 					<label>身份:</label>
 					<select name='user.role'>
@@ -129,24 +141,12 @@
 					<input type="text" name="user.school" class="text" value="" >
 				</div>
 				<div class="field">
-					<label>用户名:</label>
-					<input type="text" name="user.id" class="text" value="" >
-				</div>
-				<div class="field">
-					<label>姓名:</label>
-					<input type="text" name="user.name" class="text" value="${user.name }">
-				</div>
-				<div class="field">
-					<label>密码:</label>
-					<input type="password" name="user.password" class="text"  value="${user.password }">
-				</div>
-				<div class="field">
 					<label>电子邮件:</label>
-					<input type="text" name="user.email" class="text" value="${user.email }">
+					<input type="text" name="user.email" class="text" value="">
 				</div>
 				<div class="field">
 					<label>性别:</label>
-					<input type="text" name="user.sex" class="text" value="${user.sex }">
+					<input type="text" name="user.sex" class="text" value="">
 				</div>
 				<div class="field">
 					<input  class='button color medium' type="submit"  value="提交">

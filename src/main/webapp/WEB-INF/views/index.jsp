@@ -72,26 +72,13 @@
 		<div class="headline low-margin"><h4>最近加入的学生</h4></div>
 	</div>
 	
-	<div class="one-third column">
-			<img src="images/web/student.png" alt="" style="height: 150px">
-		<div class="team-name"><h5>温家宝</h5></div>
-		<div class="team-about"><p>好好学习</p></div>
-	</div>
+	<c:forEach items="${students }" var="bean" begin="0" end="6">
 	<div class="one-third column">
 		<img src="images/web/student.png" alt="" style="height: 150px">
-		<div class="team-name"><h5>温家宝</h5></div>
-		<div class="team-about"><p>好好学习</p></div>
+		<div class="team-name"><h5>${bean.name }</h5></div>
+		<div class="team-about"><p>加入时间:${bean.createDate }</p></div>
 	</div>
-	<div class="one-third column">
-			<img src="images/web/student.png" alt="" style="height: 150px">
-		<div class="team-name"><h5>温家宝</h5></div>
-		<div class="team-about"><p>好好学习</p></div>
-	</div>
-	<div class="one-third column">
-			<img src="images/web/student.png" alt="" style="height: 150px">
-		<div class="team-name"><h5>温家宝</h5></div>
-		<div class="team-about"><p>好好学习</p></div>
-	</div>
+	</c:forEach>
 </div>
 
 
@@ -100,11 +87,11 @@
 	<div class="sixteen columns">
 		<div class="headline low-margin"><h4>最近加入的老师</h4></div>
 	</div>
-	<c:forEach items="${users }" var="bean" begin="0" end="2">
+	<c:forEach items="${teachers }" var="bean" begin="0" end="6">
 	<div class="one-third column">
-		<img src="upload/head/${bean.headimg }" alt="">
+		<img src="images/web/student.png" alt="" style="height: 150px">
 		<div class="team-name"><h5>${bean.name }</h5></div>
-		<div class="team-about"><p>${bean.remark }</p></div>
+		<div class="team-about"><p>加入时间:${bean.createDate }</p></div>
 	</div>
 	</c:forEach>
 </div>

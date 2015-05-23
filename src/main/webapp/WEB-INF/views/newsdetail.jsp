@@ -98,6 +98,11 @@
 		<div class="post-content">
 			<div class="post-title"><h2><a href="blog_post.html">${news.title }</a></h2></div>
 			<div class="post-meta"><span><i class="mini-ico-calendar"></i>发表于： ${news.createDate }</span> <span><i class="mini-ico-user"></i>发布人 <a href="#">${news.user.name }</a></span></div>
+			<c:if test="${news.filePath!=null}">
+			<div style="margin-bottom: 30px" >
+				附件下载：<a href="upload/${news.filePath }">下载</a>
+			</div>
+			</c:if>
 			<div class="post-description">
 				${news.context }
 			</div>

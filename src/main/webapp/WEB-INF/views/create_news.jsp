@@ -85,7 +85,7 @@
 	<div class="sixteen columns " >
 		<!-- Form -->
 		<div id="contact-form">
-			<form method="post" action="${pageContext.request.contextPath}/doCreateNews">
+			<form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/doCreateNews">
 				<div class="field">
 					<label>标题:</label>
 					<input type="text" name="news.title" class="text">
@@ -98,6 +98,11 @@
 					</c:forEach>
 					</select>
 				</div>
+				<div class="field">
+					<label>附件:</label>
+					<input type="file" name="filePath" class="text">
+				</div>
+				
 				<div class="field">
 					<label>内容: </label>
 					<script type="text/plain" id="newscontext" name="news.context">

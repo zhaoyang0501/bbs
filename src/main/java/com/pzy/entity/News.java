@@ -27,6 +27,13 @@ public class News {
 	private Category category;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private User user;
+	private String filePath;
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public User getUser() {
 		return user;
 	}

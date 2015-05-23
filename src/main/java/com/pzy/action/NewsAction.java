@@ -1,8 +1,12 @@
 package com.pzy.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -26,6 +30,10 @@ public class NewsAction extends PageAction {
 	
 	private News news;
 	private List<Category> categorys;
+	
+	private File filePath;  
+	private String filePathContentType;  
+	private String filePathFileName; 
 	@Autowired
 	private CategoryService categoryService;
 	@Autowired
@@ -59,6 +67,19 @@ public class NewsAction extends PageAction {
 	}
 	@Action(value = "doCreateNews", results = { @Result(name = "success", location = "/WEB-INF/views/news.jsp") }) 
 	public String doCreateNews() {
+		String realpath = ServletActionContext.getServletContext().getRealPath("/upload");
+		if(filePath!=null){
+		File savefile = new File(new File(realpath), this.filePathFileName);
+	         try {
+				FileUtils.copyFile(filePath, savefile);
+				news.setFilePath(filePathFileName);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+		}
+		
+        
 		news.setUser((User)ActionContext.getContext().getSession().get("user"));
 		news.setCreateDate(new Date());
 		newsService.save(news);
@@ -95,5 +116,23 @@ public class NewsAction extends PageAction {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public File getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(File filePath) {
+		this.filePath = filePath;
+	}
+	public String getFilePathContentType() {
+		return filePathContentType;
+	}
+	public void setFilePathContentType(String filePathContentType) {
+		this.filePathContentType = filePathContentType;
+	}
+	public String getFilePathFileName() {
+		return filePathFileName;
+	}
+	public void setFilePathFileName(String filePathFileName) {
+		this.filePathFileName = filePathFileName;
 	}
 }
